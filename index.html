@@ -1,0 +1,720 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>PETERMAYSTER Piotr Jurczyk — Usługi dekarskie, elewacje, wykończenia · Police</title>
+  <meta name="description" content="PETERMAYSTER Piotr Jurczyk — dekarz z Polic. Krycie i naprawa dachów, obróbki blacharskie, czyszczenie i malowanie elewacji, usługi wykończeniowe. Solidnie i terminowo. Tel. 508 162 954." />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@500;600;700;800;900&family=IBM+Plex+Mono:wght@400;500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --ink: #1a1613;
+      --ink-soft: #3d3630;
+      --terracotta: #b4472a;
+      --terracotta-deep: #7a3018;
+      --terracotta-scale: #a23f26;
+      --zinc: #6e6a62;
+      --zinc-dark: #575249;
+      --limestone: #f4efe6;
+      --paper: #fbf8f2;
+      --line: #ddd5c7;
+      --line-dark: #4a423a;
+      --white: #ffffff;
+
+      --font-display: "Archivo", system-ui, sans-serif;
+      --font-body: "IBM Plex Sans", system-ui, sans-serif;
+      --font-mono: "IBM Plex Mono", ui-monospace, monospace;
+
+      --container: 1240px;
+      --ease: cubic-bezier(0.22, 0.61, 0.36, 1);
+    }
+
+    *, *::before, *::after { box-sizing: border-box; }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      margin: 0;
+      font-family: var(--font-body);
+      font-size: 17px;
+      line-height: 1.65;
+      color: var(--ink);
+      background: var(--limestone);
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+      overflow-x: hidden;
+    }
+
+    a { color: inherit; text-decoration: none; }
+    img, svg { display: block; max-width: 100%; }
+
+    .container {
+      width: 100%;
+      max-width: var(--container);
+      margin: 0 auto;
+      padding: 0 28px;
+    }
+
+    .icon { width: 24px; height: 24px; stroke: currentColor; stroke-width: 1.75; fill: none; stroke-linecap: round; stroke-linejoin: round; flex: none; }
+    .icon-lg { width: 34px; height: 34px; stroke-width: 1.6; }
+    .icon-sm { width: 18px; height: 18px; }
+
+    /* Accessibility */
+    :focus-visible {
+      outline: 2.5px solid var(--terracotta-deep);
+      outline-offset: 3px;
+    }
+    .skip {
+      position: absolute; left: -999px; top: 0;
+      background: var(--ink); color: var(--white);
+      padding: 10px 16px; z-index: 200; border-radius: 0 0 4px 0;
+    }
+    .skip:focus { left: 0; }
+
+    /* ---------- Header ---------- */
+    header {
+      position: sticky; top: 0; z-index: 50;
+      background: var(--limestone);
+      border-bottom: 1px solid var(--line);
+    }
+    .bar {
+      display: flex; align-items: center; justify-content: space-between;
+      height: 76px;
+    }
+    .bar-right { display: flex; align-items: center; gap: 40px; }
+    .brand { display: flex; flex-direction: column; line-height: 1; }
+    .brand .name {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: 22px;
+      letter-spacing: 0.02em;
+      color: var(--ink);
+    }
+    .brand .role {
+      font-family: var(--font-mono);
+      font-size: 10.5px;
+      letter-spacing: 0.28em;
+      text-transform: uppercase;
+      color: var(--zinc-dark);
+      margin-top: 6px;
+    }
+    nav.desktop { display: flex; align-items: center; gap: 36px; }
+    nav.desktop a.navlink {
+      font-size: 14px; font-weight: 500;
+      letter-spacing: 0.02em;
+      color: var(--ink-soft);
+      position: relative; padding: 4px 0;
+      transition: color 0.18s var(--ease);
+    }
+    nav.desktop a.navlink::after {
+      content: ""; position: absolute; left: 0; bottom: -2px;
+      width: 0; height: 2px; background: var(--terracotta);
+      transition: width 0.22s var(--ease);
+    }
+    nav.desktop a.navlink:hover { color: var(--ink); }
+    nav.desktop a.navlink:hover::after { width: 100%; }
+
+    .callbtn {
+      display: inline-flex; align-items: center; gap: 9px;
+      font-family: var(--font-mono); font-weight: 600; font-size: 14px;
+      letter-spacing: 0.02em;
+      background: var(--ink); color: var(--white);
+      padding: 12px 18px;
+      transition: background 0.18s var(--ease), transform 0.18s var(--ease);
+    }
+    .callbtn:hover { background: var(--terracotta-deep); }
+    .callbtn .icon { width: 18px; height: 18px; stroke-width: 2; }
+
+    .menu-toggle {
+      display: none; background: none; border: 1px solid var(--line);
+      width: 46px; height: 46px; cursor: pointer; color: var(--ink);
+      align-items: center; justify-content: center;
+    }
+    .menu-toggle .icon { width: 22px; height: 22px; stroke-width: 2; }
+
+    /* ---------- Hero ---------- */
+    .hero {
+      position: relative;
+      background: var(--terracotta);
+      color: var(--white);
+      overflow: hidden;
+    }
+    .hero-tiles {
+      position: absolute; inset: 0; width: 100%; height: 100%;
+      object-fit: cover; object-position: center;
+      z-index: 0;
+    }
+    /* flat solid panel (not a gradient) to seat the type */
+    .hero-scrim {
+      position: absolute; inset: 0;
+      background: rgba(26, 22, 19, 0.5);
+      z-index: 1;
+    }
+    .hero-inner {
+      position: relative; z-index: 2;
+      padding-top: 118px;
+      padding-bottom: 122px;
+    }
+    .eyebrow {
+      display: inline-flex; align-items: center; gap: 12px;
+      font-family: var(--font-mono);
+      font-size: 12px; letter-spacing: 0.32em; text-transform: uppercase;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 30px;
+    }
+    .eyebrow::before {
+      content: ""; width: 34px; height: 2px; background: var(--white);
+    }
+    .hero h1 {
+      font-family: var(--font-display);
+      font-weight: 900;
+      font-size: clamp(2.35rem, 8.7vw, 7rem);
+      line-height: 0.94;
+      letter-spacing: -0.015em;
+      margin: 0;
+      text-transform: uppercase;
+      text-shadow: 0 2px 30px rgba(26,22,19,0.28);
+    }
+    .hero h1 .second {
+      display: block;
+      font-weight: 600;
+      -webkit-text-stroke: 1.5px rgba(255,255,255,0.95);
+      color: transparent;
+      text-shadow: none;
+    }
+    .hero p.lead {
+      max-width: 640px;
+      font-size: clamp(1.05rem, 1.6vw, 1.28rem);
+      line-height: 1.55;
+      color: rgba(255,255,255,0.94);
+      margin: 34px 0 0;
+    }
+    .hero-actions {
+      display: flex; flex-wrap: wrap; align-items: center; gap: 16px;
+      margin-top: 42px;
+    }
+    .btn {
+      display: inline-flex; align-items: center; gap: 11px;
+      font-weight: 600; font-size: 16px; letter-spacing: 0.01em;
+      padding: 16px 26px;
+      transition: background 0.18s var(--ease), color 0.18s var(--ease), border-color 0.18s var(--ease);
+      cursor: pointer; border: 2px solid transparent;
+    }
+    .btn-primary {
+      background: var(--white); color: var(--ink);
+      font-family: var(--font-mono); font-weight: 600;
+    }
+    .btn-primary:hover { background: var(--ink); color: var(--white); }
+    .btn-ghost {
+      background: transparent; color: var(--white);
+      border-color: rgba(255,255,255,0.6);
+    }
+    .btn-ghost:hover { border-color: var(--white); background: rgba(255,255,255,0.1); }
+    .btn .icon { width: 20px; height: 20px; stroke-width: 2; }
+
+    .hero-rating {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 44px;
+      font-size: 14px; color: rgba(255,255,255,0.92);
+      font-family: var(--font-mono);
+    }
+    .stars { display: inline-flex; gap: 2px; }
+    .stars .icon { width: 16px; height: 16px; fill: var(--white); stroke: none; }
+
+    /* fish-scale ridge divider */
+    .ridge { display: block; width: 100%; height: 26px; }
+
+    /* ---------- Section shell ---------- */
+    section { position: relative; }
+    .section-pad { padding: 104px 0; }
+
+    .section-head { max-width: 720px; margin-bottom: 56px; }
+    .kicker {
+      font-family: var(--font-mono);
+      font-size: 12px; letter-spacing: 0.3em; text-transform: uppercase;
+      color: var(--terracotta-deep);
+      display: flex; align-items: center; gap: 12px;
+      margin-bottom: 20px;
+    }
+    .kicker::before { content: ""; width: 28px; height: 2px; background: var(--terracotta); }
+    .section-head h2 {
+      font-family: var(--font-display);
+      font-weight: 800;
+      font-size: clamp(2rem, 4.4vw, 3.2rem);
+      line-height: 1.02;
+      letter-spacing: -0.01em;
+      margin: 0 0 18px;
+      text-transform: uppercase;
+    }
+    .section-head p {
+      font-size: 1.1rem; color: var(--zinc-dark);
+      margin: 0; max-width: 620px;
+    }
+
+    /* ---------- Services (indexed list, no cards) ---------- */
+    .services { border-top: 1px solid var(--line); }
+    .service {
+      display: grid;
+      grid-template-columns: 64px 1fr auto;
+      gap: 34px;
+      align-items: start;
+      padding: 40px 0;
+      border-bottom: 1px solid var(--line);
+      transition: padding-left 0.3s var(--ease);
+    }
+    .service:hover { padding-left: 12px; }
+    .service .s-icon {
+      color: var(--terracotta-deep);
+      padding-top: 4px;
+    }
+    .service h3 {
+      font-family: var(--font-display);
+      font-weight: 700;
+      font-size: 1.6rem;
+      margin: 0 0 10px;
+      letter-spacing: -0.005em;
+    }
+    .service p { margin: 0; color: var(--zinc-dark); max-width: 620px; }
+    .service .s-tags {
+      display: flex; flex-wrap: wrap; gap: 8px 18px; margin-top: 16px;
+      font-family: var(--font-mono); font-size: 12.5px; letter-spacing: 0.03em;
+      color: var(--zinc);
+    }
+    .service .s-tags span { display: inline-flex; align-items: center; gap: 7px; }
+    .service .s-tags span::before { content: ""; width: 5px; height: 5px; background: var(--terracotta); }
+    .service .s-num {
+      font-family: var(--font-mono);
+      font-size: 13px; color: var(--zinc);
+      padding-top: 8px;
+      letter-spacing: 0.05em;
+    }
+
+    /* ---------- Why (dark band) ---------- */
+    .why { background: var(--ink); color: var(--paper); }
+    .why .kicker { color: #d98a6e; }
+    .why .kicker::before { background: var(--terracotta); }
+    .why .section-head h2 { color: var(--paper); }
+    .why-grid {
+      display: grid; grid-template-columns: repeat(3, 1fr);
+      border-top: 1px solid var(--line-dark);
+    }
+    .why-item {
+      padding: 44px 34px 44px 0;
+      border-bottom: 1px solid var(--line-dark);
+    }
+    .why-grid .why-item:not(:last-child) {
+      border-right: 1px solid var(--line-dark);
+      padding-right: 34px; padding-left: 0;
+    }
+    .why-grid .why-item + .why-item { padding-left: 34px; }
+    .why-item .w-icon { color: var(--terracotta); margin-bottom: 22px; }
+    .why-item h3 {
+      font-family: var(--font-display); font-weight: 700;
+      font-size: 1.3rem; margin: 0 0 10px;
+    }
+    .why-item p { margin: 0; color: rgba(244,239,230,0.68); font-size: 1rem; }
+    .why-foot {
+      display: flex; align-items: center; gap: 16px; flex-wrap: wrap;
+      margin-top: 44px;
+      font-family: var(--font-mono); font-size: 15px;
+      color: rgba(244,239,230,0.9);
+    }
+    .why-foot .stars .icon { fill: var(--terracotta); width: 18px; height: 18px; }
+
+    /* ---------- Contact (spec sheet) ---------- */
+    .contact { background: var(--paper); }
+    .contact-grid {
+      display: grid; grid-template-columns: 1.05fr 1fr; gap: 72px;
+      align-items: start;
+    }
+    .contact h2 {
+      font-family: var(--font-display); font-weight: 800;
+      font-size: clamp(2.2rem, 5vw, 3.6rem); line-height: 1.0;
+      letter-spacing: -0.01em; text-transform: uppercase; margin: 0 0 24px;
+    }
+    .contact .lead { font-size: 1.15rem; color: var(--zinc-dark); margin: 0 0 36px; max-width: 460px; }
+    .contact .btn-primary { background: var(--ink); color: var(--white); }
+    .contact .btn-primary:hover { background: var(--terracotta-deep); }
+    .contact .btn-line {
+      display: inline-flex; align-items: center; gap: 10px;
+      margin-top: 22px; margin-left: 20px;
+      font-family: var(--font-mono); font-size: 14px; font-weight: 500;
+      color: var(--ink); border-bottom: 2px solid var(--terracotta);
+      padding-bottom: 3px;
+      transition: gap 0.2s var(--ease);
+    }
+    .contact .btn-line:hover { gap: 16px; }
+
+    .spec {
+      border-top: 2px solid var(--ink);
+    }
+    .spec-row {
+      display: grid; grid-template-columns: 130px 1fr;
+      gap: 20px; align-items: baseline;
+      padding: 20px 0;
+      border-bottom: 1px solid var(--line);
+    }
+    .spec-row dt {
+      font-family: var(--font-mono); font-size: 11.5px;
+      letter-spacing: 0.22em; text-transform: uppercase; color: var(--zinc);
+    }
+    .spec-row dd {
+      margin: 0; font-family: var(--font-mono); font-size: 17px;
+      color: var(--ink); font-weight: 500;
+    }
+    .spec-row dd a { border-bottom: 1px solid transparent; transition: border-color 0.18s var(--ease); }
+    .spec-row dd a:hover { border-color: var(--terracotta); }
+    .spec-note {
+      margin-top: 22px; font-size: 14px; color: var(--zinc-dark);
+      display: flex; align-items: center; gap: 10px;
+    }
+    .spec-note .icon { color: var(--terracotta-deep); }
+
+    /* ---------- Footer ---------- */
+    footer {
+      background: var(--ink); color: rgba(244,239,230,0.72);
+      padding: 52px 0;
+    }
+    .foot-grid { display: flex; align-items: flex-end; justify-content: space-between; gap: 32px; flex-wrap: wrap; }
+    footer .name {
+      font-family: var(--font-display); font-weight: 900; font-size: 24px;
+      color: var(--paper); letter-spacing: 0.02em; line-height: 1;
+    }
+    footer .sub { font-family: var(--font-mono); font-size: 12px; letter-spacing: 0.18em; text-transform: uppercase; margin-top: 10px; color: rgba(244,239,230,0.55); }
+    footer .foot-meta { font-family: var(--font-mono); font-size: 13px; line-height: 1.9; text-align: right; }
+    footer .foot-meta a:hover { color: var(--terracotta); }
+
+    /* ---------- Reveal animation ---------- */
+    .reveal { opacity: 0; transform: translateY(22px); transition: opacity 0.7s var(--ease), transform 0.7s var(--ease); }
+    .reveal.in { opacity: 1; transform: none; }
+
+    /* ---------- Mobile nav ---------- */
+    .mobile-nav {
+      display: none;
+      border-bottom: 1px solid var(--line);
+      background: var(--limestone);
+    }
+    .mobile-nav.open { display: block; }
+    .mobile-nav a {
+      display: block; padding: 16px 28px; font-size: 16px; font-weight: 500;
+      border-top: 1px solid var(--line);
+    }
+    .mobile-nav a:first-child { border-top: none; }
+
+    /* ---------- Responsive ---------- */
+    @media (max-width: 900px) {
+      .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+      .why-grid { grid-template-columns: 1fr; }
+      .why-grid .why-item, .why-grid .why-item:not(:last-child) {
+        border-right: none; padding: 34px 0; padding-left: 0;
+      }
+      .why-grid .why-item + .why-item { padding-left: 0; }
+    }
+    @media (max-width: 760px) {
+      body { font-size: 16px; }
+      nav.desktop { display: none; }
+      header .callbtn { display: none; }
+      .menu-toggle { display: inline-flex; }
+      .section-pad { padding: 72px 0; }
+      .hero-inner { padding-top: 84px; padding-bottom: 88px; }
+      .service { grid-template-columns: 44px 1fr; gap: 22px; }
+      .service .s-num { display: none; }
+      .service:hover { padding-left: 0; }
+      .contact .btn-line { margin-left: 0; margin-top: 18px; display: flex; }
+      .foot-grid { flex-direction: column; align-items: flex-start; }
+      footer .foot-meta { text-align: left; }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+      * { animation: none !important; }
+      .service, .contact .btn-line { transition: none; }
+    }
+  </style>
+</head>
+<body>
+  <a class="skip" href="#uslugi">Przejdź do treści</a>
+
+  <!-- ============ HEADER ============ -->
+  <header>
+    <div class="container bar">
+      <a class="brand" href="#top" aria-label="PETERMAYSTER Piotr Jurczyk — strona główna">
+        <span class="name">PETERMAYSTER</span>
+        <span class="role">Piotr Jurczyk · Dekarz</span>
+      </a>
+      <div class="bar-right">
+        <nav class="desktop" aria-label="Główna">
+          <a class="navlink" href="#uslugi">Usługi</a>
+          <a class="navlink" href="#dlaczego">Dlaczego my</a>
+          <a class="navlink" href="#kontakt">Kontakt</a>
+        </nav>
+        <a class="callbtn" href="tel:+48508162954">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5c0 8.8 6.2 15 15 15a2 2 0 0 0 2-1.7l.3-2a1.5 1.5 0 0 0-1-1.6l-3-1a1.5 1.5 0 0 0-1.6.4l-.9 1a11 11 0 0 1-4.8-4.8l1-.9a1.5 1.5 0 0 0 .4-1.6l-1-3A1.5 1.5 0 0 0 7.7 2.7l-2 .3A2 2 0 0 0 4 5Z"/></svg>
+          508 162 954
+        </a>
+        <button class="menu-toggle" id="menuToggle" aria-label="Menu" aria-expanded="false" aria-controls="mobileNav">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+        </button>
+      </div>
+    </div>
+    <div class="mobile-nav" id="mobileNav">
+      <a href="#uslugi">Usługi</a>
+      <a href="#dlaczego">Dlaczego my</a>
+      <a href="#kontakt">Kontakt</a>
+      <a href="tel:+48508162954">Zadzwoń: 508 162 954</a>
+    </div>
+  </header>
+
+  <!-- ============ HERO ============ -->
+  <section class="hero" id="top">
+    <img class="hero-tiles" src="images/tiles.png" alt="" loading="eager" decoding="async" />
+    <div class="hero-scrim" aria-hidden="true"></div>
+    <div class="container hero-inner">
+      <span class="eyebrow">Dekarz · Police i okolice</span>
+      <h1>Petermayster<span class="second">Piotr Jurczyk</span></h1>
+      <p class="lead">Dachy, elewacje i wykończenia wykonane solidnie i terminowo — od pokrycia i obróbek blacharskich po mycie oraz malowanie fasad.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+48508162954">
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5c0 8.8 6.2 15 15 15a2 2 0 0 0 2-1.7l.3-2a1.5 1.5 0 0 0-1-1.6l-3-1a1.5 1.5 0 0 0-1.6.4l-.9 1a11 11 0 0 1-4.8-4.8l1-.9a1.5 1.5 0 0 0 .4-1.6l-1-3A1.5 1.5 0 0 0 7.7 2.7l-2 .3A2 2 0 0 0 4 5Z"/></svg>
+          Zadzwoń: 508 162 954
+        </a>
+        <a class="btn btn-ghost" href="#uslugi">
+          Zakres usług
+          <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 5v14M6 13l6 6 6-6"/></svg>
+        </a>
+      </div>
+      <div class="hero-rating">
+        <span class="stars" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </span>
+        5,0 w Google 
+      </div>
+    </div>
+    <svg class="ridge" viewBox="0 0 1200 26" preserveAspectRatio="none" aria-hidden="true">
+      <path d="M0 26 V10 Q20 26 40 10 Q60 26 80 10 Q100 26 120 10 Q140 26 160 10 Q180 26 200 10 Q220 26 240 10 Q260 26 280 10 Q300 26 320 10 Q340 26 360 10 Q380 26 400 10 Q420 26 440 10 Q460 26 480 10 Q500 26 520 10 Q540 26 560 10 Q580 26 600 10 Q620 26 640 10 Q660 26 680 10 Q700 26 720 10 Q740 26 760 10 Q780 26 800 10 Q820 26 840 10 Q860 26 880 10 Q900 26 920 10 Q940 26 960 10 Q980 26 1000 10 Q1020 26 1040 10 Q1060 26 1080 10 Q1100 26 1120 10 Q1140 26 1160 10 Q1180 26 1200 10 V26 Z" fill="#f4efe6"/>
+    </svg>
+  </section>
+
+  <!-- ============ SERVICES ============ -->
+  <section class="section-pad" id="uslugi">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Zakres usług</span>
+        <h2>Czym się zajmujemy</h2>
+        <p>Trzy obszary, jeden wykonawca. Od nowego pokrycia, przez odświeżenie elewacji, po prace wykończeniowe.</p>
+      </div>
+
+      <div class="services">
+        <div class="service reveal">
+          <div class="s-icon">
+            <svg class="icon icon-lg" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M3 15 16 5l13 10"/>
+              <path d="M6 14v13h20V14"/>
+              <path d="M6 19h20M6 24h20"/>
+              <path d="M11 27v-8h10v8"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Usługi dekarskie</h3>
+            <p>Krycie i naprawa dachów, wymiana starych pokryć, obróbki blacharskie oraz montaż rynien i okien dachowych. Dach szczelny i gotowy na lata.</p>
+            <div class="s-tags">
+              <span>Krycie dachów</span>
+              <span>Obróbki blacharskie</span>
+              <span>Rynny</span>
+              <span>Okna dachowe</span>
+            </div>
+          </div>
+          <div class="s-num">01</div>
+        </div>
+
+        <div class="service reveal">
+          <div class="s-icon">
+            <svg class="icon icon-lg" viewBox="0 0 32 32" aria-hidden="true">
+              <rect x="6" y="6" width="16" height="8" rx="1.5"/>
+              <path d="M22 10h4v5H15"/>
+              <path d="M15 15v4"/>
+              <rect x="12" y="19" width="6" height="8" rx="1"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Czyszczenie i malowanie elewacji</h3>
+            <p>Mycie, odgrzybianie i malowanie elewacji oraz dachów. Przywracamy fasadzie równy, czysty kolor i chronimy ją przed wilgocią.</p>
+            <div class="s-tags">
+              <span>Mycie fasad</span>
+              <span>Odgrzybianie</span>
+              <span>Malowanie</span>
+              <span>Dachy</span>
+            </div>
+          </div>
+          <div class="s-num">02</div>
+        </div>
+
+        <div class="service reveal">
+          <div class="s-icon">
+            <svg class="icon icon-lg" viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M4 20 16 8l8 8-12 12-8-8z" transform="translate(0 -1)"/>
+              <path d="M16 8l4-4 8 8-4 4"/>
+              <path d="M9 25l14-14"/>
+            </svg>
+          </div>
+          <div>
+            <h3>Usługi wykończeniowe</h3>
+            <p>Prace wykończeniowe wewnątrz i na zewnątrz: zabudowy poddaszy, montaż i detale, które domykają budowę oraz remont.</p>
+            <div class="s-tags">
+              <span>Poddasza</span>
+              <span>Zabudowy</span>
+              <span>Wykończenia</span>
+              <span>Remonty</span>
+            </div>
+          </div>
+          <div class="s-num">03</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ WHY ============ -->
+  <section class="section-pad why" id="dlaczego">
+    <div class="container">
+      <div class="section-head reveal">
+        <span class="kicker">Dlaczego my</span>
+        <h2>Rzetelny fachowiec z Polic</h2>
+        <p>Bez podwykonawców-anonimów. Umawiasz się z Piotrem i z Piotrem rozliczasz gotową robotę.</p>
+      </div>
+
+      <div class="why-grid">
+        <div class="why-item reveal">
+          <div class="w-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 21s7-5.3 7-11a7 7 0 1 0-14 0c0 5.7 7 11 7 11z"/><circle cx="12" cy="10" r="2.5"/></svg>
+          </div>
+          <h3>Lokalnie w Policach</h3>
+          <p>Działamy w Policach, Szczecinie i okolicznych gminach. Blisko, więc szybko przyjedziemy na oględziny.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="w-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M12 3l7 3v5c0 4.5-3 7.6-7 9-4-1.4-7-4.5-7-9V6l7-3z"/><path d="M9 12l2 2 4-4"/></svg>
+          </div>
+          <h3>Solidnie i terminowo</h3>
+          <p>Ustalony termin i zakres prac traktujemy poważnie. Po pracy zostawiamy porządek.</p>
+        </div>
+        <div class="why-item reveal">
+          <div class="w-icon">
+            <svg class="icon icon-lg" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 7h16M4 7l1.5 12.5A1.5 1.5 0 0 0 7 21h10a1.5 1.5 0 0 0 1.5-1.5L20 7"/><path d="M9 7V5a3 3 0 0 1 6 0v2"/><path d="M12 11v6M9 14h6"/></svg>
+          </div>
+          <h3>Wycena bez zobowiązań</h3>
+          <p>Oglądamy, mierzymy i podajemy uczciwą cenę. Bez presji i ukrytych kosztów.</p>
+        </div>
+      </div>
+
+      <div class="why-foot reveal">
+        <span class="stars" aria-hidden="true">
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+          <svg class="icon" viewBox="0 0 24 24"><path d="M12 2l2.9 6.3 6.9.7-5.1 4.7 1.4 6.8L12 17.8 5.9 20.5l1.4-6.8L2.2 9l6.9-.7L12 2z"/></svg>
+        </span>
+        Ocena 5,0 w Google
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ CONTACT ============ -->
+  <section class="section-pad contact" id="kontakt">
+    <div class="container contact-grid">
+      <div class="reveal">
+        <span class="kicker">Kontakt</span>
+        <h2>Umów wycenę dachu</h2>
+        <p class="lead">Zadzwoń do nas! Opowiedz, co trzeba zrobić - ustalimy termin oględzin i podamy wycenę.</p>
+        <div>
+          <a class="btn btn-primary" href="tel:+48508162954">
+            <svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 5c0 8.8 6.2 15 15 15a2 2 0 0 0 2-1.7l.3-2a1.5 1.5 0 0 0-1-1.6l-3-1a1.5 1.5 0 0 0-1.6.4l-.9 1a11 11 0 0 1-4.8-4.8l1-.9a1.5 1.5 0 0 0 .4-1.6l-1-3A1.5 1.5 0 0 0 7.7 2.7l-2 .3A2 2 0 0 0 4 5Z"/></svg>
+            Zadzwoń: 508 162 954
+          </a>
+          <a class="btn-line" href="https://maps.app.goo.gl/4yK2M44KWyKHCnTAA" target="_blank" rel="noopener">
+            Zobacz na mapie
+            <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+          </a>
+        </div>
+      </div>
+
+      <dl class="spec reveal">
+        <div class="spec-row">
+          <dt>Telefon</dt>
+          <dd><a href="tel:+48508162954">508 162 954</a></dd>
+        </div>
+        <div class="spec-row">
+          <dt>Adres</dt>
+          <dd>Odrzańska 16/4<br />72-010 Police</dd>
+        </div>
+        <div class="spec-row">
+          <dt>Obszar</dt>
+          <dd>Police · Szczecin · okolice</dd>
+        </div>
+        <p class="spec-note">
+          <svg class="icon icon-sm" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg>
+          Godziny pracy ustalamy telefonicznie.
+        </p>
+      </dl>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <div class="container foot-grid">
+      <div>
+        <div class="name">PETERMAYSTER</div>
+        <div class="sub">Piotr Jurczyk · Usługi dekarskie</div>
+      </div>
+      <div class="foot-meta">
+        <a href="tel:+48508162954">tel. 508 162 954</a><br />
+        Odrzańska 16/4, 72-010 Police<br />
+        © 2026 Petermayster Piotr Jurczyk
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // Mobile menu
+    (function () {
+      var t = document.getElementById('menuToggle');
+      var n = document.getElementById('mobileNav');
+      if (t && n) {
+        t.addEventListener('click', function () {
+          var open = n.classList.toggle('open');
+          t.setAttribute('aria-expanded', open ? 'true' : 'false');
+        });
+        n.querySelectorAll('a').forEach(function (a) {
+          a.addEventListener('click', function () {
+            n.classList.remove('open');
+            t.setAttribute('aria-expanded', 'false');
+          });
+        });
+      }
+    })();
+
+    // Scroll reveal (respects reduced motion)
+    (function () {
+      var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      var els = document.querySelectorAll('.reveal');
+      if (reduce || !('IntersectionObserver' in window)) {
+        els.forEach(function (e) { e.classList.add('in'); });
+        return;
+      }
+      var io = new IntersectionObserver(function (entries) {
+        entries.forEach(function (en) {
+          if (en.isIntersecting) { en.target.classList.add('in'); io.unobserve(en.target); }
+        });
+      }, { threshold: 0.14 });
+      els.forEach(function (e) { io.observe(e); });
+    })();
+  </script>
+</body>
+</html>
